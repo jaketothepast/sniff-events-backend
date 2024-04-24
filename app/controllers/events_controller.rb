@@ -24,7 +24,6 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-
     @event = Event.from_type(student: @student, assignment: @assignment, event_type: params[:event_type])
     # Format block to respond to.
     respond_to do |format|
@@ -70,6 +69,7 @@ class EventsController < ApplicationController
     end
 
     def set_student
+      puts params
       @student = Student.find(params[:student_id])
     end
 
