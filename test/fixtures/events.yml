@@ -3,9 +3,9 @@
 one:
   student: one
   assignment: one
-  type: 
+  event_type: 0
 
 two:
   student: two
   assignment: two
-  type: 
+  event_type: 1

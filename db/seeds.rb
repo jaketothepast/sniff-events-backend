@@ -6,5 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Student.create(name: "Test Student")
-Assignment.create(name: "Test Assignment")
+s = Student.create(name: "Test Student")
+a = Assignment.create(name: "Test Assignment")
+
+e_types = %w[:click-and-drag :click :clipboard]
+e_types.each do |t|
+  Event.from_type(student: s, assignment: a, event_type: t)
+end
