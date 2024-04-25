@@ -1,6 +1,27 @@
-<div>
-  <h1 class="font-bold text-4xl">Assignments#index</h1>
-  <p>Find me in app/views/assignments/index.html.erb</p>
-
-  <%= render @assignments %>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-base font-semibold leading-6 text-gray-900">Assignments</h1>
+      <p class="mt-2 text-sm text-gray-700">All assignments currently in progress</p>
+    </div>
+  </div>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
+              <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                <span class="sr-only">View</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <%= render @assignments %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
