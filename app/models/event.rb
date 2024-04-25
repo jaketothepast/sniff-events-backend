@@ -1,13 +1,10 @@
 class Event < ApplicationRecord
-  belongs_to :student
-  belongs_to :assignment
-
   enum event_type: { click: 0, click_and_drag: 1, clipboard: 2, visibility: 3, start: 4 }
+  belongs_to :student_assignment
 
-  def self.from_type(student:, assignment:, event_type:)
+  def self.from_type(student_assignment:, event_type:)
     e = Event.new
-    e.student = student
-    e.assignment = assignment
+    e.student_assignment = student_assignment
     e.event_type = case event_type
                  when "click"
                    0

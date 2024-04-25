@@ -24,7 +24,10 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.from_type(student: @student, assignment: @assignment, event_type: params[:event_type])
+    # Get the assignment associated to the event
+    student_assignment = StudentAssignment.find_by(student: @student, assignment: @assignment)
+    # Create the event.
+    @event = Event.from_type(student_assignment: student_assignment, event_type: params[:event_type])
     # Format block to respond to.
     respond_to do |format|
       if @event.save
