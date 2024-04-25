@@ -3,7 +3,9 @@
 one:
   student: one
   assignment: one
+  cheat_score: 1
 
 two:
   student: two
   assignment: two
+  cheat_score: 10

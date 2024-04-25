@@ -16,7 +16,7 @@ class Event < ApplicationRecord
     when "start"
       4
     else
-      raise ActiveRecord::RecordInvalid.new(e)
+      raise RuntimeError.new("FUCK")
     end
   end
 end
