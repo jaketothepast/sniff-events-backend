@@ -9,7 +9,9 @@
 s = Student.create(name: "Test Student")
 a = Assignment.create(name: "Test Assignment")
 
-e_types = %w[:click-and-drag :click :clipboard]
+e_types = %w[click-and-drag click clipboard]
 e_types.each do |t|
   Event.from_type(student: s, assignment: a, event_type: t)
 end
+
+a.student_assignments.create(student: s)
