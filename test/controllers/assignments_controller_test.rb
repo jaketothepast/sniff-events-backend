@@ -18,4 +18,12 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     get assignments_index_url
     assert_select 'td', count * 2 # Number of fields in a row.
   end
+
+  test "show contains 1 student" do
+    assignment = assignments(:one)
+    get assignments_show_url(assignment.id)
+    assert_select '.student-assignment', 1
+    assert_select '.student-assignment td', 3
+    assert_select '.student-assignment td:nth-child(1)', { text: students(:one).name }
+  end
 end
