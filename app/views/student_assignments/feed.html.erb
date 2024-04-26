@@ -1,0 +1,10 @@
+<div>
+  <h1 class="text-3xl font-bold"><%= @student_assignment.student.name %> - <%= @student_assignment.assignment.name %> - <%= DateTime.now %></h1>
+
+  <ul class="list-disc list-outside">
+    <%# Turn this into a partial as well for events.%>
+    <% @student_assignment.events.all.order('created_at').each do |event| %>
+      <li class="<%= event.event_type == "click_and_drag" ? 'underline decoration-red-500' : '' %>"><%= event.event_type %> - <%= event.created_at %></li>
+    <% end %>
+  </ul>
+</div>

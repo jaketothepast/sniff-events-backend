@@ -7,3 +7,7 @@ one:
 two:
   student_assignment: two
   event_type: 1
+
+three:
+  student_assignment: two
+  event_type: 2
