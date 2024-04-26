@@ -3,12 +3,23 @@ class StudentAssignment < ApplicationRecord
   belongs_to :assignment
 
   # The event stream for a given assignment student pair lives here.
-  has_many :event
+  has_many :events
 
-  validates_numericality_of :cheat_score, :in => 0..100
+  EVENT_WEIGHTS = {
+    click_and_drag: 5,
+    visibility: 3,
+    clipboard: 3,
+    click: 1
+  }
 
   # Creates a new event linked to the student assignment. Will parse the type.
   def new_event(event_type)
     events.create(event_type: Event.type_from(event_type))
+  end
+
+  # Calculate the cheat score for this student assignment
+  def cheat_score
+    raw = events.map{ |e| EVENT_WEIGHTS[e.event_type.to_sym] }.sum
+    [raw, 100].min
   end
 end

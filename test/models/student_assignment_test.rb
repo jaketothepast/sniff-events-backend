@@ -1,21 +1,19 @@
 require "test_helper"
 
 class StudentAssignmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-  #
-  test "won't allow cheat score out of bounds" do
+
+  test "updates cheat score properly" do
     sa = student_assignments(:one)
-    sa.cheat_score = -1
-    assert_equal false, sa.save
+    # This should update sa
+    sa.new_event("click-and-drag")
+    assert_equal StudentAssignment::EVENT_WEIGHTS[:click_and_drag] + 1, sa.cheat_score
+    sa.new_event("click")
+    assert_equal 7, sa.cheat_score
 
-    sa.cheat_score = 101
-    assert_equal false, sa.save
-
-    (1..100).each do |score|
-      sa.cheat_score = score
-      assert sa.save
+    25.times do
+      sa.new_event("click-and-drag")
     end
+
+    assert_equal 100, sa.cheat_score
   end
 end
