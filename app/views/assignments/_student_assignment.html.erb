@@ -1,6 +1,5 @@
-<tr class="student-assignment">
+<tr class="student-assignment <%= cheat_color(student_assignment) %>">
     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= student_assignment.student.name %></td>
-    <%# This could be a cheating likelihood score? %>
     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= student_assignment.cheat_score %></td>
     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
         <%= link_to 'View Events', student_assignments_view_events_path(student_assignment.id),

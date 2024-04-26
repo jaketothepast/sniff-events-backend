@@ -4,6 +4,10 @@ one:
   student_assignment: one
   event_type: 0
 
+four:
+  student_assignment: one
+  event_type: 1
+
 two:
   student_assignment: two
   event_type: 1

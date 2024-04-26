@@ -11,3 +11,6 @@ a = Assignment.create(name: "Test Assignment")
 sa = a.student_assignments.create(student: s)
 sa.new_event("click-and-drag")
 sa.new_event("clipboard")
+
+s2 = Student.create(name: "Jacob Windle")
+sa2 = a.student_assignments.create(student: s2)

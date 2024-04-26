@@ -26,4 +26,10 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     assert_select '.student-assignment td', 3
     assert_select '.student-assignment td:nth-child(1)', { text: students(:one).name }
   end
+
+  test "has one red row" do
+    assignment = assignments(:one)
+    get assignments_show_url(assignment.id)
+    assert_select '.bg-red-300', 1
+  end
 end
