@@ -1,13 +1,15 @@
 <% turbo_page_requires_reload %>
+
 <div>
   <h1 class="text-3xl font-bold"><%= @student_assignment.student.name %> - <%= @student_assignment.assignment.name %> - <%= DateTime.now %></h1>
 
-  <ul class="list-disc list-outside">
-    <%# Turn this into a partial as well for events.%>
-    <% @student_assignment.events.all.order('created_at').each do |event| %>
-      <li class="<%= event.event_type == "click_and_drag" ? 'underline decoration-red-500' : '' %>"><%= event.event_type %> - <%= event.created_at %></li>
-    <% end %>
-  </ul>
 
-  <%= link_to 'Back to Assignment', assignments_show_path(@student_assignment.assignment), type: 'button', class: button_style %>
+  <div class="flow-root mb-20 mt-10">
+    <ul role="list" class="-mb-8">
+      <%= render partial: 'student_assignments/cheat_event', collection: @student_assignment.events.all.order('created_at DESC'), as: :event %>
+    </ul>
+  </div>
+
+
+  <%= link_to 'Back to Assignment', assignments_show_path(@student_assignment.assignment), type: 'button', class: "#{button_style} mt-10" %>
 </div>
