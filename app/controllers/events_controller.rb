@@ -26,11 +26,13 @@ class EventsController < ApplicationController
   def create
     # Get the assignment associated to the event
     student_assignment = StudentAssignment.find_by(student: @student, assignment: @assignment)
+    puts "EVENT TYPE #{params[:event_type]}"
     @event = student_assignment.new_event(params[:event_type])
     # Format block to respond to.
     respond_to do |format|
       if @event.save
         format.json { render :show, status: :created, location: @event }
+        @assignment.broadcast_replace_later_to 'student_assignments', partial: 'assignments/show_assignment'
       else
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
