@@ -9,7 +9,9 @@ class StudentAssignment < ApplicationRecord
     click_and_drag: 5,
     visibility: 3,
     clipboard: 3,
-    click: 1
+    copy: 5,
+    paste: 5,
+    click: 0
   }
 
   # Creates a new event linked to the student assignment. Will parse the type.
