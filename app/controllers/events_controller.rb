@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :set_student, only: %i[ create ]
   before_action :set_assignment, only: %i[ create ]
   skip_before_action :verify_authenticity_token, only: %i[ create ]
+  skip_before_action :require_login
 
   # GET /events or /events.json
   def index

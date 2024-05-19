@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: %i[show]
+  skip_before_action :require_login
 
   # Show all assignments in a table format.
   def index
