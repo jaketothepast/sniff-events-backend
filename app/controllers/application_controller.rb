@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless logged_in?
       flash[:error] = "Must be logged in to view this page"
-      redirect_to sessions_new_path(redirect_url: request.fullpath)
+      redirect_to login_path(redirect_url: request.fullpath)
     end
   end
 end

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   get 'admin/index'
-  get 'sessions/new'
-  get 'sessions/create'
   get 'sessions/destroy'
+
+  scope controller: 'sessions' do
+    get 'login' => :new
+    post 'login' => :create, as: :login_session
+    delete 'logout' => :destroy
+  end
+
   resources :users
   resources :events
 
