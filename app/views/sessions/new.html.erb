@@ -22,5 +22,7 @@
     <div class="actions">
       <%= submit_tag "Login", class: "rounded-lg py-3 px-5 bg-green-600 text-black inline-block font-medium cursor-poniter" %>
     </div>
+
+    <%= hidden_field_tag :redirect_url, params[:redirect_url] %>
   <% end %>
 </div>

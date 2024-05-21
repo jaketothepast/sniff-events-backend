@@ -9,7 +9,6 @@ class AdminController < ApplicationController
 
   # TODO: Maybe move this one day to the application controller?
   def check_user_scope
-    debugger
     unless User.permissions[@user.permissions] > 0
       redirect_to not_found_url
     end
