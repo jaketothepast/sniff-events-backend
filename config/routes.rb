@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  scope controller: 'static' do
+    get 'not_found' => :not_found
+    get 'error' => :error
+  end
+
   get 'admin/index'
   get 'sessions/destroy'
 

@@ -8,4 +8,4 @@ one:
 two:
   name: Dumb User
   password_digest: <%= BCrypt::Password.create("secret") %>
-  permissions: 1
+  permissions: 0

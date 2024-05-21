@@ -14,3 +14,6 @@ sa.new_event("clipboard")
 
 s2 = Student.create(name: "Jacob Windle")
 sa2 = a.student_assignments.create(student: s2)
+
+User.create(name: "admin", password: "password", password_confirmation: "password", permissions: 1)
+User.create(name: "regular", password: "password", password_confirmation: "password", permissions: 0)

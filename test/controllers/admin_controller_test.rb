@@ -14,4 +14,15 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     # Select the admin header and determine if it's on page.
     assert_select "h1", "Admin#index"
   end
+
+  test "We are forbidden based on user scope" do
+    # POst to the login endpoint
+    post login_session_path(redirect_url: admin_index_path), params: { name: "Dumb User", password: "secret" }
+
+    # Try to get the admin URL
+    get admin_index_url
+
+    # We were sent to /not_found
+    assert_redirected_to "/not_found"
+  end
 end

@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def logged_in?
-    !session[:user_id].nil?
-  end
-
   def require_login
-    unless logged_in?
+    if session[:user_id].nil?
       flash[:error] = "Must be logged in to view this page"
       redirect_to login_path(redirect_url: request.fullpath)
+      return
     end
+
+    # If we are logged in, set the user.
+    @user = User.find(session[:user_id])
   end
 end
