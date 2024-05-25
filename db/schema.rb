@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_19_175016) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_25_123518) do
   create_table "assignments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "choices", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "value"
+    t.boolean "correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -24,6 +33,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_19_175016) do
     t.integer "event_type", default: 0
     t.integer "student_assignment_id", null: false
     t.index ["student_assignment_id"], name: "index_events_on_student_assignment_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "test_id", null: false
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "student_assignments", force: :cascade do |t|
@@ -41,6 +58,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_19_175016) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tests_on_name", unique: true
+    t.index ["user_id"], name: "index_tests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -49,7 +76,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_19_175016) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "choices", "questions"
   add_foreign_key "events", "student_assignments"
+  add_foreign_key "questions", "tests"
   add_foreign_key "student_assignments", "assignments"
   add_foreign_key "student_assignments", "students"
+  add_foreign_key "tests", "users"
 end

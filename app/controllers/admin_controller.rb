@@ -8,11 +8,16 @@ class AdminController < ApplicationController
   def index
   end
 
+  ##
+  # Manage tests
+  #
+  def tests
+  end
+
   private
 
-  # TODO: Maybe move this one day to the application controller?
   def check_user_scope
-    unless User.permissions[@user.permissions] > 0
+    unless @user.is_admin?
       redirect_to not_found_url
     end
   end

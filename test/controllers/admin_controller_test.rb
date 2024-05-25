@@ -25,4 +25,5 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     # We were sent to /not_found
     assert_redirected_to "/not_found"
   end
+
 end
