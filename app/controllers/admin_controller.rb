@@ -1,4 +1,7 @@
 class AdminController < ApplicationController
+  # Specify using our admin layout specifically
+  layout "admin_layout"
+
   before_action :require_login
   before_action :check_user_scope
 
