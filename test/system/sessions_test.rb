@@ -20,6 +20,7 @@ class SessionsTest < ApplicationSystemTestCase
     click_on "Login"
 
     click_on "Test Management"
-    assert_text "ADMIN#TESTS"
+    assert_text "Create a new test"
   end
+
 end

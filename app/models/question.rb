@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   has_many :choices
 
   def type
-    choices = choices.where(correct: true).length
+    choices = self.choices.where(correct: true).length
     case
     when choices == 0
       :incomplete

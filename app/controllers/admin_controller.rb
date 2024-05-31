@@ -12,6 +12,7 @@ class AdminController < ApplicationController
   # Manage tests
   #
   def tests
+    @tests = Test.all
   end
 
   private
