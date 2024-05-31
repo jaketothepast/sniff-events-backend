@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
     # If we are logged in, set the user.
     @user = User.find(session[:user_id])
   end
+
+  def check_user_scope
+    unless @user.is_admin?
+      redirect_to not_found_url
+    end
+  end
 end
