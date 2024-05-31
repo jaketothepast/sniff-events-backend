@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'admin/index'
   get 'admin/tests'
+  get 'admin/new_test'
   get 'sessions/destroy'
 
   scope controller: 'sessions' do

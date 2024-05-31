@@ -15,6 +15,10 @@ class AdminController < ApplicationController
     @tests = Test.all
   end
 
+  def new_test
+    @test = Test.new
+  end
+
   private
 
   def check_user_scope
