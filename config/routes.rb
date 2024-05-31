@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  scope controller: 'tests' do
+    get 'tests/new' => :new
+    post 'tests/create' => :create
+  end
+
   resources :users
   resources :events
 
