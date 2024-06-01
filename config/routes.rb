@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'question/new'
+  get 'question/create'
+  get 'question/show'
+  get 'question/update'
+  get 'question/delete'
 
   scope controller: 'static' do
     get 'not_found' => :not_found
@@ -19,6 +24,7 @@ Rails.application.routes.draw do
   scope controller: 'tests' do
     get 'tests/new' => :new
     post 'tests/create' => :create
+    get 'tests/:id' => :show
   end
 
   resources :users

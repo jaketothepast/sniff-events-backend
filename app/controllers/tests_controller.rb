@@ -18,6 +18,11 @@ class TestsController < ApplicationController
     end
   end
 
+  def show
+    # Show the test, give the option for adding more questions.
+    @test = Test.find(params[:id])
+  end
+
   def update
   end
 
