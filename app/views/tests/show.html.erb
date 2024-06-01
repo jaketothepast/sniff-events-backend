@@ -1,0 +1,9 @@
+<div>
+    <h3><%= @test.name %></h3>
+    <p><%= @test.description %></p>
+
+    <%= render @test.questions %>
+
+    <%= link_to "Add a Question", question_new_path, class: "text-indigo-600 hover:text-indigo-900" %>
+
+</div>
