@@ -1,6 +1,10 @@
 require "test_helper"
 
 class QuestionControllerTest < ActionDispatch::IntegrationTest
+  before do
+    post login_session_path, params: { name: "Super Duper Admin Guy", password: "secret" }
+  end
+
   test "should get new" do
     get question_new_url
     assert_response :success
