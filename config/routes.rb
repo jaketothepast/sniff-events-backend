@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   scope controller: 'tests' do
     get 'tests/new' => :new
     post 'tests/create' => :create
-    get 'tests/:id' => :show
+    get 'tests/:id' => :show, as: "tests_show"
   end
 
   resources :users

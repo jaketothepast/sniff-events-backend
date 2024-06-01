@@ -14,16 +14,4 @@ class AdminController < ApplicationController
   def tests
     @tests = Test.all
   end
-
-  def new_test
-    @test = Test.new
-  end
-
-  private
-
-  def check_user_scope
-    unless @user.is_admin?
-      redirect_to not_found_url
-    end
-  end
 end
