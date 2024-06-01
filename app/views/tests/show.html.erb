@@ -4,6 +4,5 @@
 
     <%= render @test.questions %>
 
-    <%= link_to "Add a Question", question_new_path, class: "text-indigo-600 hover:text-indigo-900" %>
-
+    <%= link_to "Add a Question", question_new_path(@test), class: "text-indigo-600 hover:text-indigo-900" %>
 </div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'question/new'
   get 'question/create'
   get 'question/show'
   get 'question/update'
@@ -8,6 +7,10 @@ Rails.application.routes.draw do
   scope controller: 'static' do
     get 'not_found' => :not_found
     get 'error' => :error
+  end
+
+  scope controller: 'question' do
+    get ':test/question/new' => :new, as: :question_new
   end
 
   get 'admin/index'
