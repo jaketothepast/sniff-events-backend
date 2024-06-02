@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'question/create'
+  get 'choice/create'
+  get 'choice/show'
+  get 'choice/update'
+  get 'choice/delete'
   get 'question/show'
   get 'question/update'
   get 'question/delete'
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
 
   scope controller: 'question' do
     get ':test/question/new' => :new, as: :question_new
+    post ':test/question/create' => :create, as: :question_create
   end
 
   get 'admin/index'

@@ -1,0 +1,6 @@
+<%= turbo_stream.append "questions" do %>
+    <%= render partial: 'question/question', object: @question %>
+<% end %>
+
+<%= turbo_stream.replace "new_question" do %>
+<% end %>

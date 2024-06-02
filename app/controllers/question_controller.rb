@@ -12,6 +12,13 @@ class QuestionController < ApplicationController
   end
 
   def create
+    @question = Question.new(test_id: params[:test].to_i, **question_params)
+    if @question.save
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+    end
   end
 
   def show
@@ -21,5 +28,11 @@ class QuestionController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:text)
   end
 end
