@@ -5,6 +5,10 @@ class QuestionController < ApplicationController
 
   def new
     @question = Question.new(test_id: params[:test_id])
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def create

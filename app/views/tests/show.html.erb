@@ -4,5 +4,11 @@
 
     <%= render @test.questions %>
 
-    <%= link_to "Add a Question", question_new_path(@test), class: "text-indigo-600 hover:text-indigo-900" %>
+    <%= turbo_frame_tag "new_question" do %>
+    <% end %>
+
+    <%= link_to "Add a Question",
+        question_new_path(@test),
+        class: "text-indigo-600 hover:text-indigo-900",
+        data: { turbo_stream: true, turbo_frame: :new_question } %>
 </div>
