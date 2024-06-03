@@ -2,6 +2,8 @@ class Question < ApplicationRecord
   belongs_to :test
   has_many :choices
 
+  validates :test, presence: true
+
   def type
     choices = self.choices.where(correct: true).length
     case
