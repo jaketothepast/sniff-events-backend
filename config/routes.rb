@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'choice/delete'
   get 'question/show'
   get 'question/update'
-  get 'question/delete'
 
   scope controller: 'static' do
     get 'not_found' => :not_found
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   scope controller: 'question' do
     get ':test/question/new' => :new, as: :question_new
     post ':test/question/create' => :create, as: :question_create
+    delete 'question/:id' => :delete, as: :question_delete
   end
 
   get 'admin/index'
