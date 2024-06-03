@@ -1,7 +1,9 @@
-<li>
-    <div>
-        <h1><%= question.text %></h1>
-        <%= link_to "Delete question", question_delete_path(question),
-            data: { turbo_method: :delete }%>
-    </div>
-</li>
+<%= turbo_frame_tag dom_id(question) do %>
+    <li>
+        <div>
+            <h1><%= question.text %></h1>
+            <%= link_to "Delete question", question_delete_path(question),
+                data: { turbo_method: :delete }%>
+        </div>
+    </li>
+<% end %>

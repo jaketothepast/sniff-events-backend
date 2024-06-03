@@ -13,7 +13,7 @@
         class: "text-indigo-600 hover:text-indigo-900",
         data: { turbo_stream: true, turbo_frame: :new_question } %>
 
-    <ul>
+    <%= turbo_frame_tag "questions" do %>
         <%= render partial: 'question/question', collection: @test.questions %>
-    </ul>
+    <% end %>
 </div>
