@@ -1,7 +1,7 @@
 class ChoiceController < ApplicationController
   before_action :require_login
   before_action :check_user_scope
-  before_action :set_question
+  before_action :set_question, only: %i[index new create]
 
   def index
     @choices = Choice.where(question_id: params[:question_id])
@@ -37,6 +37,11 @@ class ChoiceController < ApplicationController
   end
 
   def delete
+    @choice = Choice.find(params[:id])
+    @choice.destroy
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private
