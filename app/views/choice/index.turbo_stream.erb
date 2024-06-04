@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "#{dom_id(@question)}_choices" %>
+    <% render partial: 'choice', collection: @choices %>
+<% end %>

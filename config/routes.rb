@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'choice/create'
   get 'choice/show'
   get 'choice/update'
   get 'choice/delete'
@@ -8,7 +7,10 @@ Rails.application.routes.draw do
 
   scope controller: 'choice' do
     get 'choice/:question_id' => :new, as: :choice_new
+    post 'choice/create' => :create, as: :choice_create
+    get 'choice/:question_id/all' => :index, as: :choice_index
   end
+
   scope controller: 'static' do
     get 'not_found' => :not_found
     get 'error' => :error
