@@ -3,17 +3,19 @@ require "test_helper"
 class QuestionControllerTest < ActionDispatch::IntegrationTest
 
   def setup
+    @user = users(:one)
   end
 
   test "should get new" do
-    post login_session_path, params: { name: "Super Duper Admin Guy", password: "secret", redirect_url: tests_show_path(tests(:two)) }
-    get question_new_url
+    post login_session_path, params: { name: @user.name, password: "secret" }
+    get question_new_url(tests(:one))
     assert_response :success
   end
 
   test "should create question" do
+    post login_session_path, params: { name: @user.name, password: "secret" }
     test = tests(:two)
-    post question_create_path(test), params: { text: "my text" }
+    post question_create_path(test), params: { question: { text: "my text" } }
     assert_response :success
   end
 end

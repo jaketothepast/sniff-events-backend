@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to params[:redirect_url]
+      if params[:redirect_url].nil?
+        render status: 204
+      else
+        redirect_to params[:redirect_url]
+      end
     else
       redirect_to login_url, alert: 'Invalid login'
     end
