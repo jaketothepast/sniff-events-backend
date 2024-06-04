@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'question/show'
   get 'question/update'
 
+  scope controller: 'choice' do
+    get 'choice/:question_id' => :new, as: :choice_new
+  end
   scope controller: 'static' do
     get 'not_found' => :not_found
     get 'error' => :error

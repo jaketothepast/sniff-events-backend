@@ -4,6 +4,10 @@
             <h1><%= question.text %></h1>
             <%= link_to "Delete question", question_delete_path(question),
                 data: { turbo_method: :delete }%>
+            <%= link_to "Add choice", choice_new_path(question), data: { turbo_stream: true} %>
+
+            <%= turbo_frame_tag "#{dom_id(question)}_choices" do %>
+            <% end %>
         </div>
     </li>
 <% end %>
