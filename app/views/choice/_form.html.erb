@@ -1,6 +1,6 @@
 <%= form_with model: choice, url: choice.id.blank? ? choice_create_path : choice_update_path(choice) do |f| %>
     <%= f.check_box :correct %>
     <%= f.text_field :value %>
-    <%= f.hidden_field :question_id, value: choice.question_id %>
+    <%= f.hidden_field :question_id, value: choice.question_id.blank? ? question.id : choice.question_id %>
     <%= f.submit "Add choice" %>
 <% end %>

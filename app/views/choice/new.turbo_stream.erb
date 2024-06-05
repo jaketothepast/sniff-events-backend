@@ -1,3 +1,3 @@
-<%= turbo_stream.prepend "#{dom_id(@question)}_choices" do %>
+<%= turbo_stream.update "#{dom_id(@question)}_add_choice" do %>
     <%= render partial: 'form', locals: { choice: @choice } %>
 <% end %>

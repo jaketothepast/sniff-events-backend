@@ -4,9 +4,17 @@
             <h1><%= question.text %></h1>
             <%= link_to "Delete question", question_delete_path(question),
                 data: { turbo_method: :delete }%>
-            <%= link_to "Add choice", choice_new_path(question), data: { turbo_stream: true } %>
 
             <%= turbo_frame_tag "#{dom_id(question)}_choices", src: choice_index_path(question) do %>
+            <% end %>
+
+            <%# Add a new choice form populates initially %>
+            <%= turbo_frame_tag "#{dom_id(question)}_add_choice" do %>
+                <% if question.choices.blank? %>
+                    <%= render partial: "choice/form", locals: { question: question, choice: Choice.new } %>
+                <% else %>
+                    <%= link_to "Add Choice", choice_new_path(question), data: { turbo_stream: true } %>
+                <% end %>
             <% end %>
         </div>
     </li>

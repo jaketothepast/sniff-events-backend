@@ -1,3 +1,7 @@
 <%= turbo_stream.append "#{dom_id(@question)}_choices" do %>
     <%= render partial: 'choice', locals: { choice: @choice } %>
 <% end %>
+
+<%= turbo_stream.update "#{dom_id(@question)}_add_choice" do %>
+    <%= link_to "Add choice", choice_new_path(@question), data: { turbo_stream: true } %>
+<% end %>
