@@ -3,5 +3,6 @@
         <p><%= choice.correct %></p>
         <p><%= choice.value %></p>
         <%= link_to "Delete Choice", choice_delete_path(choice), data: { turbo_method: :delete } %>
+        <%= link_to "Edit Choice", choice_edit_path(choice), data: { turbo_stream: true } %>
     </div>
 <% end %>

@@ -1,6 +1,6 @@
 class Question < ApplicationRecord
   belongs_to :test
-  has_many :choices
+  has_many :choices, dependent: :destroy
 
   validates :test, presence: true
 

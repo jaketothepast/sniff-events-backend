@@ -33,7 +33,17 @@ class ChoiceController < ApplicationController
   def show
   end
 
+  def edit
+    @choice = Choice.find(params[:id])
+  end
+
   def update
+    @choice = Choice.find(params[:id])
+    @choice.update(**choice_params)
+    @choice.save
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def delete
