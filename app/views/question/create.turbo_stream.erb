@@ -3,5 +3,4 @@
 <% end %>
 
 <%= turbo_stream.replace "new_question" do %>
-    <%= render partial: 'question/form', locals: { question: Question.new } %>
 <% end %>
