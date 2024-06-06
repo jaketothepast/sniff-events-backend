@@ -26,4 +26,11 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/not_found"
   end
 
+  test "Deploy test can view page" do
+    post login_session_path(redirect_url: admin_index_path), params: { name: "Super Duper Admin Guy", password: "secret" }
+    get admin_test_deploy_url(tests(:one))
+    assert_response :success
+    assert_select "h1", "Deploy MyFirstTest"
+  end
+
 end

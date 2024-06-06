@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   before_action :require_login
   before_action :check_user_scope
+  before_action :set_test, only: %i[deploy]
 
   def index
   end
@@ -13,5 +14,13 @@ class AdminController < ApplicationController
   #
   def tests
     @tests = Test.all
+  end
+
+  def deploy
+  end
+
+  private
+  def set_test
+    @test = Test.find(params[:id])
   end
 end

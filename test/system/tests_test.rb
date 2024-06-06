@@ -25,6 +25,7 @@ class TestsTest < ApplicationSystemTestCase
     assert_text "Question text"
 
     # Add a choice
+    # TODO: Figure out clicking the checkbox, and add choice
     fill_in "Choice text:", with: "Choice text"
     click_on "Add choice"
     assert_text "Choice text"

@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'admin/new_test'
   get 'sessions/destroy'
 
+  scope controller: 'admin' do
+    get 'deploy/:id' => :deploy, as: :admin_test_deploy
+  end
+
   scope controller: 'sessions' do
     get 'login' => :new
     post 'login' => :create, as: :login_session
