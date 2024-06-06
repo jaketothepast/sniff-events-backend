@@ -1,7 +1,9 @@
 require "application_system_test_case"
 
 class TestsTest < ApplicationSystemTestCase
-  test "Creates a test" do
+
+
+  test "Creates a test, adds question and choices" do
     admin = users(:one)
 
     visit admin_index_url
@@ -14,7 +16,23 @@ class TestsTest < ApplicationSystemTestCase
     fill_in "Name", with: "test test"
     fill_in "Description", with: "test description"
     click_on "Submit"
+    click_on "test test"
 
-    assert_text "test test"
+    # Add a question
+    click_on "Add a Question"
+    fill_in "Enter question text", with: "Question text"
+    click_on "Add question"
+    assert_text "Question text"
+
+    # Add a choice
+    fill_in "Choice text:", with: "Choice text"
+    click_on "Add choice"
+    assert_text "Choice text"
+
+    # Update the choice
+    click_on "Edit Choice"
+    fill_in "Choice text:", with: "New choice text"
+    click_on "Add choice"
+    assert_text "New choice text"
   end
 end

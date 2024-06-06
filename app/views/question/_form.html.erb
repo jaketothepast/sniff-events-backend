@@ -1,5 +1,5 @@
 <%= form_with model: @question, url: question_create_path do |form| %>
-  <h3>Enter test question</h3>
+  <%= form.label :text, "Enter question text" %>
   <%= form.text_area :text, size: "60x10" %>
 
   <%= form.submit "Add question", class: "bg-slate-400 p-4 rounded-sm shadow-md cursor-pointer" %>
