@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   scope controller: 'admin' do
     get 'deploy/:id' => :deploy, as: :admin_test_deploy
+    patch 'deploy/:id' => :deploy, as: :admin_test_deploy_edit
   end
 
   scope controller: 'sessions' do

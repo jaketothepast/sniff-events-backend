@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_25_123518) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_06_140601) do
   create_table "assignments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_25_123518) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: false
     t.index ["name"], name: "index_tests_on_name", unique: true
     t.index ["user_id"], name: "index_tests_on_user_id"
   end

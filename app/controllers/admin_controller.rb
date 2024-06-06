@@ -17,10 +17,19 @@ class AdminController < ApplicationController
   end
 
   def deploy
+    if request.patch?
+      @test.active = test_params[:active]
+      @test.save
+      return redirect_to admin_tests_url
+    end
   end
 
   private
   def set_test
     @test = Test.find(params[:id])
+  end
+
+  def test_params
+    params.require(:test).permit(:active)
   end
 end

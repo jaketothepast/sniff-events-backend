@@ -1,3 +1,10 @@
 <div>
     <h1>Deploy <%= @test.name %></h1>
+    <p>Deployed: <%= @test.active %></p>
+    <%= form_with model: @test, url: admin_test_deploy_edit_path(@test) do |f| %>
+        <%= f.label :active, "Active:" %>
+        <%= f.check_box :active %>
+
+        <%= f.submit "Change deploy status" %>
+    <% end %>
 </div>

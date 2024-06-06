@@ -33,4 +33,27 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1", "Deploy MyFirstTest"
   end
 
+  test "New test is not active" do
+    post login_session_path(redirect_url: admin_index_path), params: { name: "Super Duper Admin Guy", password: "secret" }
+    get admin_tests_url
+    assert_response :success
+    assert_select "td", "false"
+
+    # We also have an active test, thanks to fixtures
+    assert_select "td", "true"
+  end
+
+  test "Deploy test changes deploy status" do
+    post login_session_path(redirect_url: admin_index_path), params: { name: "Super Duper Admin Guy", password: "secret" }
+    get admin_test_deploy_url(tests(:one))
+
+    # Post to the admin deploy method
+    patch admin_test_deploy_edit_url(tests(:one)), params: { test: { active: true } }
+    assert_redirected_to admin_tests_url
+
+    # # Assert that there are no falses on the page.
+    assert_select "td", { text: "true", count: 2 }
+    #assert_select "td"
+  end
+
 end

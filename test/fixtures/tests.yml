@@ -4,8 +4,10 @@ one:
   user: one
   name: MyFirstTest
   description: MyText
+  active: false
 
 two:
   user: two
   name: MySecondTest
   description: MyText
+  active: true
