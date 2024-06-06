@@ -10,15 +10,17 @@
   </head>
 
   <body class="h-full">
-<div>
-  <div class="lg:pl-72">
-    <main class="py-10">
-      <div class="px-4 sm:px-6 lg:px-8">
+  <div>
+    <div class="lg:pl-72">
+      <nav class="menu">
+        <%= link_to "Test Management", admin_tests_path %>
+      </nav>
+      <main class="py-10">
+        <div class="px-4 sm:px-6 lg:px-8">
           <%= yield %>
-        <!-- Your content -->
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   </div>
-</div>
   </body>
 </html>

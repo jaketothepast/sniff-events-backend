@@ -1,6 +1,6 @@
 <div>
     <div class="card" style="width: 18rem;">
-        <h3 class="text-2xl"><%= @test.name %></h3>
+        <h1 class="text-2xl"><%= @test.name %></h3>
         <p><%= @test.description %></p>
     </div>
 
@@ -13,6 +13,8 @@
         data: { turbo_stream: true, turbo_frame: :new_question } %>
 
     <%= turbo_frame_tag "questions" do %>
-        <%= render partial: 'question/question', collection: @test.questions %>
+        <ul>
+            <%= render partial: 'question/question', collection: @test.questions %>
+        </ul>
     <% end %>
 </div>
