@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_taker: one
+  test: one
+  last_access: 2024-06-07 10:06:16
+  completed_at: 2024-06-07 10:06:16
+
+two:
+  test_taker: two
+  test: two
+  last_access: null
+  completed_at: null

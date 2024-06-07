@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_06_140601) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_07_140616) do
   create_table "assignments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -58,6 +58,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_06_140601) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "test_memberships", force: :cascade do |t|
+    t.integer "test_taker_id", null: false
+    t.integer "test_id", null: false
+    t.datetime "last_access"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_test_memberships_on_test_id"
+    t.index ["test_taker_id"], name: "index_test_memberships_on_test_taker_id"
+  end
+
+  create_table "test_takers", force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
@@ -82,5 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_06_140601) do
   add_foreign_key "questions", "tests"
   add_foreign_key "student_assignments", "assignments"
   add_foreign_key "student_assignments", "students"
+  add_foreign_key "test_memberships", "test_takers"
+  add_foreign_key "test_memberships", "tests"
   add_foreign_key "tests", "users"
 end

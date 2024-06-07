@@ -49,11 +49,12 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
 
     # Post to the admin deploy method
     patch admin_test_deploy_edit_url(tests(:one)), params: { test: { active: true } }
-    assert_redirected_to admin_tests_url
+
+    # Follow the redict back to the tests page.
+    follow_redirect!
 
     # # Assert that there are no falses on the page.
     assert_select "td", { text: "true", count: 2 }
-    #assert_select "td"
   end
 
 end
