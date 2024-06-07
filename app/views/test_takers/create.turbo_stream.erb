@@ -1,3 +1,7 @@
 <%= turbo_stream.append "#{dom_id(@test)}_test_takers" do %>
     <%= render partial: "test_taker", locals: { test_taker: @test_taker } %>
 <% end %>
+
+<%= turbo_stream.replace "new_test_taker" do %>
+    <%= render partial: 'form', locals: { test_taker: @test_taker, test: @test } %>
+<% end %>

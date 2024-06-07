@@ -13,7 +13,15 @@ class TestTakersController < ApplicationController
   end
 
   def create
-    @test_taker = @test.test_takers.create(test_taker_params)
+    # Try to find the test taker
+    @test_taker = TestTaker.find_by(email: test_taker_params[:email])
+
+    if @test_taker.blank?
+      @test_taker = @test.test_takers.create(test_taker_params)
+    else
+      @test.test_memberships.create(test_taker: @test_taker)
+    end
+
     if @test_taker
       respond_to do |format|
         format.turbo_stream

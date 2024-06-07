@@ -1,8 +1,3 @@
 <%= turbo_frame_tag "new_test_taker" do %>
-    <%= form_with model: @test_taker, url: test_takers_create_path(@test) do |f| %>
-        <%= f.label :email, "User Email" %>
-        <%= f.email_field :email %>
-
-        <%= f.submit "Add user" %>
-    <% end %>
+    <%= render partial: 'form', locals: { test_taker: @test_taker, test: @test } %>
 <% end %>
