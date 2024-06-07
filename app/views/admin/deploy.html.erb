@@ -1,6 +1,13 @@
 <div>
     <h1>Deploy <%= @test.name %></h1>
     <p>Deployed: <%= @test.active %></p>
+
+    <%= turbo_frame_tag "new_test_taker", src: test_takers_new_path(@test) do %>
+    <% end %>
+
+    <%= turbo_frame_tag "#{dom_id(@test)}_test_takers", src: test_takers_index_path(@test) do %>
+    <% end %>
+
     <%= form_with model: @test, url: admin_test_deploy_edit_path(@test) do |f| %>
         <%= f.label :active, "Active:" %>
         <%= f.check_box :active %>

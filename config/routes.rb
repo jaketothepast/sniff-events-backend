@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     patch 'choice/:id/update' => :update, as: :choice_update
   end
 
+  scope controller: 'test_takers' do
+    get "users/:test_id" => :index, as: :test_takers_index
+    get "users/:test_id/new" => :new, as: :test_takers_new
+    post "users/:test_id/create" => :create, as: :test_takers_create
+  end
+
   scope controller: 'static' do
     get 'not_found' => :not_found
     get 'error' => :error

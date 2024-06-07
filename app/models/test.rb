@@ -1,6 +1,8 @@
 class Test < ApplicationRecord
   belongs_to :user
   has_many :questions
+  has_many :test_memberships
+  has_many :test_takers, through: :test_memberships
 
   validate :user_should_be_admin
 
