@@ -57,4 +57,16 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     assert_select "td", { text: "true", count: 2 }
   end
 
+  test "adding test taker changes test table" do
+    post login_session_path(redirect_url: admin_index_path), params: { name: "Super Duper Admin Guy", password: "secret" }
+    test = tests(:one)
+    get admin_test_deploy_url(test)
+    assert_difference "TestTaker.count", 1 do
+      post test_takers_create_path(test, format: :turbo_stream), params: { test_taker: { email: "my.email@gmail.com" } }
+    end
+
+    get admin_tests_url
+    assert_select "td", { text: "2" }
+  end
+
 end
